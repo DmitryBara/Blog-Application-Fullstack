@@ -43,8 +43,8 @@ def main (request):
 	expires_in = token_dict['expires_in']
 	friends_params['access_token'] = access_token
 	friends_json = requests.get(url=url_friends, params=friends_params).text
-	friends_dict = json.loads(friends_json)[0][1]
+	friends_list = json.loads(friends_json)['response']['items']
 
 
 	#return render(request, 'base.html', {'r2' : r2})
-	return HttpResponse (friends_dict[4])
+	return HttpResponse (friends_list[4])
