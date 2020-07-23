@@ -36,7 +36,6 @@ def startpage(request):
 def main (request):
 	code = request.GET.get('code')
 	url = f"{url_token}?client_id={params['client_id']}&client_secret={params['client_secret']}&redirect_uri={params['redirect_uri']}&code={code}"
-	#token_dict = str(requests.get(url).text)
 	token_dict = json.loads(requests.get(url).text)
 	access_token = token_dict['access_token']
 	user_id = token_dict['user_id']
@@ -47,12 +46,12 @@ def main (request):
 
 	i = 0
 	person = friends_list[i]
-	u_id = person['id']
-	first_name = person['first_name']
-	last_name = person['last_name']
-	city = person['city']['title']
-	photo_url = person['photo_100']
-	online = person['online']
+	u_id = person.get('id')
+	first_name = person.get('first_name')
+	last_name = person.get('last_name')
+	city = person.get('city', {}).get('title')
+	photo_url = person.get('photo_100')
+	online = person.get('online')
 
 	#return render(request, 'base.html', {'r2' : r2})
-	return HttpResponse (str(u_id) + first_name + last_name + city + photo_url + str(online))
+	return HttpResponse (str(u_id) +''+ first_name +''+ last_name +''+ city +''+ photo_url +''+ str(online))
