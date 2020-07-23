@@ -54,4 +54,4 @@ def main (request):
 	online = person.get('online')
 
 	#return render(request, 'base.html', {'r2' : r2})
-	return HttpResponse (str(u_id) +''+ first_name +''+ last_name +''+ city +''+ photo_url +''+ str(online))
+	return HttpResponse (str(u_id) +' '+ str(first_name) +' '+ str(last_name) +' '+ str(city) +' '+ str(photo_url) +' '+ str(online))
