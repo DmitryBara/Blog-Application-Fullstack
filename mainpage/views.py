@@ -46,4 +46,4 @@ def main (request):
 	#return render(request, 'base.html', {'r2' : r2})
 	#return HttpResponse (r2.text)
 	#return HttpResponse (str(friends.url))
-	return HttpResponse (type(token_dict))
+	return HttpResponse (str(token_dict))
