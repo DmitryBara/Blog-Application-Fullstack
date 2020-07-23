@@ -40,9 +40,9 @@ def main (request):
 	#token_dict = str(requests.get(url).text)
 	token_dict = json.loads(requests.get(url).text)
 	access_token = token_dict['access_token']
-	#user_id = token_dict['user_id']
-	#expires_in = token_dict['expires_in']
-	#friends_params['access_token'] = access_token
+	user_id = token_dict['user_id']
+	expires_in = token_dict['expires_in']
+	friends_params['access_token'] = access_token
 	
 	#friends = requests.get(url=url_friends, params=friends_params)
 
@@ -50,4 +50,4 @@ def main (request):
 	#return render(request, 'base.html', {'r2' : r2})
 	#return HttpResponse (r2.text)
 	#return HttpResponse (str(friends.url))
-	return HttpResponse (str(type(token_dict)))
+	return HttpResponse (access_token)
