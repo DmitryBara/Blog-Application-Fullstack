@@ -1,33 +1,47 @@
+import requests
+
 from django.shortcuts import render
 from django.http import HttpResponse 
 #from .models import *
-import requests
 from django.urls import reverse
-import time
 
-friends_request = 'https://api.vk.com/method/friends.getOnline?v=5.52&access_token='
+
+
 url_auth = 'https://oauth.vk.com/authorize'
 url_token = 'https://oauth.vk.com/access_token'
+url_friends = 'https://api.vk.com/method/friends.get?v=5.52&access_token='
 
-params = {
+token_params = {
 	'client_id':'7546793',
 	'client_secret': 'eYRacdSAyJcBXck5jYfQ',
 	'redirect_uri': 'https://dmitrybara-mysite1.herokuapp.com/main',
 	'response_type': 'code',
 	'scope': 'friends, audio, video',
 	'display': 'page',
-	'code': '',
+	'code': None,
 }
 
-def startpage(request, code = None):
-	r = requests.get(url=url_auth, params=params)
+friends_params = {
+	'v':'5.52',
+	'access_token': None,
+	'order': 'hints',
+	'count': 5,
+	'fields': 'city, online, photo_100',
+}
+
+def startpage(request):
+	r = requests.get(url=url_auth, params=token_params)
 	return render(request, 'startpage.html', {'auth_url_params' : r.url})
 
 def main (request):
 	code = request.GET.get('code')
 	url = f"{url_token}?client_id={params['client_id']}&client_secret={params['client_secret']}&redirect_uri={params['redirect_uri']}&code={code}"
-	token = requests.get(url=url)
-	#r2 = requests.get(url = url)
+	token_dict = requests.get(url=url).text
+	acces_token = token_dict['access_token']
+	friends_params['acces_token'] = acces_token
+	user_id = token_dict['user_id']
+
+	friends = requests.get(url=url_friends, params=friends_params)
 	#return render(request, 'base.html', {'r2' : r2})
 	#return HttpResponse (r2.text)
-	return HttpResponse (token.text)
+	return HttpResponse (friends.text)
