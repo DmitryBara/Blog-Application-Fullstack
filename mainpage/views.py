@@ -38,8 +38,8 @@ def main (request):
 	code = request.GET.get('code')
 	url = f"{url_token}?client_id={params['client_id']}&client_secret={params['client_secret']}&redirect_uri={params['redirect_uri']}&code={code}"
 	token_dict = str(requests.get(url).text)
-	token_dict = json.load(requests.get(url).text)
-	access_token = token_dict['access_token']
+	#token_dict = json.loads(requests.get(url).text)
+	#access_token = token_dict['access_token']
 	#friends_params['access_token'] = access_token
 	#user_id = token_dict['user_id']
 	#friends = requests.get(url=url_friends, params=friends_params)
