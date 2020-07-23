@@ -25,7 +25,7 @@ friends_params = {
 	'v':'5.52',
 	'access_token': None,
 	'order': 'hints',
-	'count': 5,
+	'count': '5',
 	'fields': 'city, online, photo_100',
 }
 
@@ -38,10 +38,10 @@ def main (request):
 	url = f"{url_token}?client_id={params['client_id']}&client_secret={params['client_secret']}&redirect_uri={params['redirect_uri']}&code={code}"
 	token_dict = requests.get(url=url).text
 	acces_token = token_dict['access_token']
-	friends_params['acces_token'] = acces_token
+	friends_params['access_token'] = acces_token
 	user_id = token_dict['user_id']
 
 	friends = requests.get(url=url_friends, params=friends_params)
 	#return render(request, 'base.html', {'r2' : r2})
 	#return HttpResponse (r2.text)
-	return HttpResponse (friends.text)
+	return HttpResponse (str(friends.url))
