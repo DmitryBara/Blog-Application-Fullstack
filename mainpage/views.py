@@ -22,13 +22,12 @@ params = {
 def startpage(request, code = None):
 	r = requests.get(url=url_auth, params=params)
 	return render(request, 'startpage.html', {'auth_url_params' : r.url})
-	#return HtmlResponse (r1.url)
 
 def main (request):
 	code = request.GET.get('code')
 	url = f"{url_token}?client_id={params['client_id']}&client_secret={params['client_secret']}&redirect_uri={params['redirect_uri']}&code={code}"
-	token = requests.get(url=url)
+	token = requests.get(url='https://google.com/')
 	#r2 = requests.get(url = url)
 	#return render(request, 'base.html', {'r2' : r2})
 	#return HttpResponse (r2.text)
-	return HttpResponse (str(token))
+	return HttpResponse (token.text)
