@@ -18,6 +18,6 @@ from django.urls import path, re_path
 import re
 
 urlpatterns = [
-    path('login/', views.login, name = 'login'),
-    path('friends/', views.friends, name = 'friends'),
+	path('/', views.startpage, name = 'startpage'),
+    path('main/', views.main, name = 'main'),
 ]
