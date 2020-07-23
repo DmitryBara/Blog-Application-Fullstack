@@ -44,10 +44,10 @@ def main (request):
 	expires_in = token_dict['expires_in']
 	friends_params['access_token'] = access_token
 	
-	#friends = requests.get(url=url_friends, params=friends_params)
+	friends = requests.get(url=url_friends, params=friends_params)
 
 
 	#return render(request, 'base.html', {'r2' : r2})
 	#return HttpResponse (r2.text)
 	#return HttpResponse (str(friends.url))
-	return HttpResponse (access_token)
+	return HttpResponse (access_token + friends.text)
