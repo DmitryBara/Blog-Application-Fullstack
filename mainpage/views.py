@@ -37,7 +37,7 @@ def startpage(request):
 def main (request):
 	code = request.GET.get('code')
 	url = f"{url_token}?client_id={params['client_id']}&client_secret={params['client_secret']}&redirect_uri={params['redirect_uri']}&code={code}"
-	token_dict = str(requests.get(url).text)
+	#token_dict = str(requests.get(url).text)
 	token_dict = json.loads(requests.get(url).text)
 	#access_token = token_dict['access_token']
 	#user_id = token_dict['user_id']
@@ -50,4 +50,4 @@ def main (request):
 	#return render(request, 'base.html', {'r2' : r2})
 	#return HttpResponse (r2.text)
 	#return HttpResponse (str(friends.url))
-	return HttpResponse (type(token_dict))
+	return HttpResponse (str(type(token_dict)) + str(token_dict))
