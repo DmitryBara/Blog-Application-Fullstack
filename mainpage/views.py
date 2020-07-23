@@ -30,7 +30,7 @@ friends_params = {
 }
 
 def startpage(request):
-	r = requests.get(url=url_auth, params=token_params)
+	r = requests.get(url=url_auth, params=params)
 	return render(request, 'startpage.html', {'auth_url_params' : r.url})
 
 def main (request):
