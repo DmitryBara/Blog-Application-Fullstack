@@ -11,7 +11,7 @@ url_auth = 'https://oauth.vk.com/authorize'
 url_token = 'https://oauth.vk.com/access_token'
 url_friends = 'https://api.vk.com/method/friends.get?v=5.52&access_token='
 
-token_params = {
+params = {
 	'client_id':'7546793',
 	'client_secret': 'eYRacdSAyJcBXck5jYfQ',
 	'redirect_uri': 'https://dmitrybara-mysite1.herokuapp.com/main',
