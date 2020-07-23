@@ -28,6 +28,8 @@ DEBUG = True
 ALLOWED_HOSTS = ['dmitry1996.pythonanywhere.com',
     '127.0.0.1',
     'localhost',
+    'dmitrybara-mysite1.herokuapp.com',
+    '188.243.60.110',
     ]
 
 
