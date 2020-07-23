@@ -45,6 +45,14 @@ def main (request):
 	friends_json = requests.get(url=url_friends, params=friends_params).text
 	friends_list = json.loads(friends_json)['response']['items']
 
+	i = 0
+	person = friends_list[i]
+	u_id = person['id']
+	first_name = person['first_name']
+	last_name = person['last_name']
+	city = person['city']['title']
+	photo_url = person['photo_100']
+	online = person['online']
 
 	#return render(request, 'base.html', {'r2' : r2})
-	return HttpResponse (friends_list[4])
+	return HttpResponse (u_id + first_name + last_name + city + photo_url + online)
