@@ -30,4 +30,4 @@ def main (request):
 	#r2 = requests.get(url = url)
 	#return render(request, 'base.html', {'r2' : r2})
 	#return HttpResponse (r2.text)
-	return HttpResponse (token.status_code)
+	return HttpResponse (token.text)
