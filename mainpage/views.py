@@ -27,7 +27,7 @@ def startpage(request, code = None):
 def main (request):
 	code = request.GET.get('code')
 	url = f"{url_token}?client_id={params['client_id']}&client_secret={params['client_secret']}&redirect_uri={params['redirect_uri']}&code={code}"
-	token = requests.get(url)
+	token = requests.get(url=url)
 	#r2 = requests.get(url = url)
 	#return render(request, 'base.html', {'r2' : r2})
 	#return HttpResponse (r2.text)
