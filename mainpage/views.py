@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.http import HttpResponse 
 #from .models import *
 from django.urls import reverse
-
+from social_django.models import AbstractUserSocialAuth, UserSocialAuth, Nonce, Association, Code, DjangoStorage
 
 
 url_auth = 'https://oauth.vk.com/authorize'
@@ -31,8 +31,9 @@ friends_params = {
 }
 
 def startpage(request):
+	a = AbstractUserSocialAuth
 	r = requests.get(url=url_auth, params=params)
-	return render(request, 'startpage.html', {'r' : r })
+	return render(request, 'startpage.html', {'r' : r }, {'a' : a})
 
 def main (request):
 	code = request.GET.get('code')
