@@ -20,6 +20,7 @@ params = {
 	'scope': 'friends, audio, photos',
 	'display': 'page',
 	'code': None,
+	'state': 'shit'
 }
 
 friends_params = {
