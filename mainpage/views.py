@@ -33,7 +33,7 @@ friends_params = {
 def startpage(request):
 	a = AbstractUserSocialAuth
 	r = requests.get(url=url_auth, params=params)
-	return render(request, 'startpage.html', {'r' : r }, {'a' : a})
+	return render(request, 'startpage.html', {'r' : r })
 
 def main (request):
 	code = request.GET.get('code')
