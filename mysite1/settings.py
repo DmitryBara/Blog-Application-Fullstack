@@ -22,6 +22,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'so)760r*)!ds(24!nv0e4+7u0lnoim==o#qpqy_ftscd91y8zj'
 
+SOCIAL_AUTH_VK_OAUTH2_KEY = '7546793'
+SOCIAL_AUTH_VK_OAUTH2_SECRET = 'eYRacdSAyJcBXck5jYfQ'
+
+LOGIN_REDIRECT_URL = '/'
+
+SOCIAL_AUTH_POSTGRES_JSONFIELD = True
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -43,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mainpage',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -70,6 +78,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
             ],
         },
     },
@@ -80,6 +89,7 @@ WSGI_APPLICATION = 'mysite1.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+
 
 DATABASES = {
     'default': {
@@ -111,6 +121,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.vk.VKOAuth2',   
+    'django.contrib.auth.backends.ModelBackend', 
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
