@@ -15,7 +15,7 @@ url_friends = 'https://api.vk.com/method/friends.get?v=5.52&access_token='
 params = {
 	'client_id':'7546793',
 	'client_secret': 'eYRacdSAyJcBXck5jYfQ',
-	'redirect_uri': 'https://dmitrybara-mysite1.herokuapp.com/main',
+	'redirect_uri': 'https://dmitrybara-mysite1.herokuapp.com',
 	'response_type': 'code',
 	'scope': 'friends, audio, photos',
 	'display': 'page',
