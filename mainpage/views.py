@@ -32,10 +32,10 @@ friends_params = {
 
 def startpage(request):
 	r = requests.get(url=url_auth, params=params)
-	return render(request, 'startpage.html', {'r' : r })
+	#return render(request, 'startpage.html', {'r' : r })
 
-def main (request):
-	code = request.GET.get('code')
+#def main (request):
+	code = r.GET.get('code')
 	url = f"{url_token}?client_id={params['client_id']}&client_secret={params['client_secret']}&redirect_uri={params['redirect_uri']}&code={code}"
 	token_dict = json.loads(requests.get(url).text)
 	access_token = token_dict['access_token']
