@@ -32,7 +32,6 @@ friends_params = {
 
 def startpage(request):
 	r = requests.get(url=url_auth, params=params)
-	if r.GET.
 	return render(request, 'startpage.html', {'r' : r })
 
 def main (request):
