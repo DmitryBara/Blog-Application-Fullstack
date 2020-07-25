@@ -3,6 +3,6 @@
 
 {% block content %}
 <p>Чтобы продолжить, необходимо авторизоваться</p>
-<p> {{ r.headers }} </p>
+<p> {{ r.text }} {{ r.status_code }}</p>
 <a href={{ r.url }} > Auth Vk </a>
 {% endblock %}
