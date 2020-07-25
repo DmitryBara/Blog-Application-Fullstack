@@ -6,5 +6,5 @@
 
 <a href= {{ r.url }} > Auth Vk </a>
 <a href="/login/vk-oauth2">SHIIIIT</a>
-<p> {{ r.headers['Content-Type']}} </p>
+<p> {{ r.is_redirect }} </p>
 {% endblock %}
