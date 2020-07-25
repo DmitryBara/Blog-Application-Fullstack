@@ -17,7 +17,7 @@ params = {
 	'client_secret': 'eYRacdSAyJcBXck5jYfQ',
 	'redirect_uri': 'https://dmitrybara-mysite1.herokuapp.com/main',
 	'response_type': 'code',
-	'scope': 'friends, audio, video',
+	'scope': 'friends, audio, photos',
 	'display': 'page',
 	'code': None,
 }
