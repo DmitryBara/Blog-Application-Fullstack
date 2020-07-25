@@ -15,7 +15,7 @@ url_friends = 'https://api.vk.com/method/friends.get?v=5.52&access_token='
 params = {
 	'client_id':'7546793',
 	'client_secret': 'eYRacdSAyJcBXck5jYfQ',
-	'redirect_uri': 'https://dmitrybara-mysite1.herokuapp.com/main',
+	'redirect_uri': 'https://dmitrybara-mysite1.herokuapp.com/',
 	'response_type': 'code',
 	'scope': 'friends, audio, photos',
 	'display': 'page',
@@ -32,9 +32,9 @@ friends_params = {
 
 def startpage(request):
 	r = requests.head(url=url_auth, params=params)
-	return render(request, 'startpage.html', {'r' : r })
+	#return render(request, 'startpage.html', {'r' : r })
 
-def main (request):
+#def main (request):
 	code = request.GET.get('code')
 	url = f"{url_token}?client_id={params['client_id']}&client_secret={params['client_secret']}&redirect_uri={params['redirect_uri']}&code={code}"
 	token_dict = json.loads(requests.get(url).text)
