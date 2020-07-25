@@ -1,9 +1,9 @@
 import requests
 import json
+from urllib.request import urlopen
 
 from django.shortcuts import render
 from django.http import HttpResponse 
-#from .models import *
 from django.urls import reverse
 #from social_django.models import AbstractUserSocialAuth, UserSocialAuth, Nonce, Association, Code, DjangoStorage
 
@@ -32,6 +32,7 @@ friends_params = {
 
 def startpage(request):
 	r = requests.get(url=url_auth, params=params)
+	if r.GET.
 	return render(request, 'startpage.html', {'r' : r })
 
 def main (request):

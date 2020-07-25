@@ -16,18 +16,22 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'so)760r*)!ds(24!nv0e4+7u0lnoim==o#qpqy_ftscd91y8zj'
+
+
+#### Authorization in VK with user model. Uncomment strings INSTALLED_APPS and TEMPLATES ####
 
 #SOCIAL_AUTH_VK_OAUTH2_KEY = '7546793'
 #SOCIAL_AUTH_VK_OAUTH2_SECRET = 'eYRacdSAyJcBXck5jYfQ'
-
 #LOGIN_REDIRECT_URL = '/'
+#SOCIAL_AUTH_POSTGRES_JSONFIELD = True
 
-SOCIAL_AUTH_POSTGRES_JSONFIELD = True
+#AUTHENTICATION_BACKENDS = [
+#    'social_core.backends.vk.VKOAuth2',   
+#    'django.contrib.auth.backends.ModelBackend', 
+#]
+
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -36,7 +40,6 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
     'dmitrybara-mysite1.herokuapp.com',
-    '188.243.60.110',
     ]
 
 
@@ -91,6 +94,7 @@ WSGI_APPLICATION = 'mysite1.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -101,6 +105,7 @@ DATABASES = {
         'PORT' : '5432',
     }
 }
+
 
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
@@ -124,10 +129,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-#AUTHENTICATION_BACKENDS = [
-#    'social_core.backends.vk.VKOAuth2',   
-#    'django.contrib.auth.backends.ModelBackend', 
-#]
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
