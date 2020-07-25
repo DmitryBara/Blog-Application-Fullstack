@@ -1,12 +1,19 @@
 import requests
 import json
-from urllib.request import urlopen
 
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse 
-from django.urls import reverse
-#from social_django.models import AbstractUserSocialAuth, UserSocialAuth, Nonce, Association, Code, DjangoStorage
+#from django.urls import reverse
+from social_django.models import AbstractUserSocialAuth, UserSocialAuth, Nonce, Association, Code, DjangoStorage
 
+
+def login(request):
+	return render(request, 'login.html')
+
+@login_required
+def mainpage(request):
+	return render(request, 'mainpage.html')
 
 url_auth = 'https://oauth.vk.com/authorize'
 url_token = 'https://oauth.vk.com/access_token'
@@ -20,7 +27,6 @@ params = {
 	'scope': 'friends, audio, photos',
 	'display': 'page',
 	'code': None,
-	'state': 'shit'
 }
 
 friends_params = {
@@ -30,11 +36,12 @@ friends_params = {
 	'fields': 'city, online, photo_100',
 }
 
+
 def startpage(request):
 	r = requests.head(url=url_auth, params=params)
-	#return render(request, 'startpage.html', {'r' : r })
+	return render(request, 'startpage.html', {'r' : r })
 
-#def main (request):
+def main (request):
 	code = request.GET.get('code')
 	url = f"{url_token}?client_id={params['client_id']}&client_secret={params['client_secret']}&redirect_uri={params['redirect_uri']}&code={code}"
 	token_dict = json.loads(requests.get(url).text)

@@ -14,22 +14,40 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
 SECRET_KEY = 'so)760r*)!ds(24!nv0e4+7u0lnoim==o#qpqy_ftscd91y8zj'
 
 
 #### Authorization in VK with user model. Uncomment strings INSTALLED_APPS and TEMPLATES ####
 
-#SOCIAL_AUTH_VK_OAUTH2_KEY = '7546793'
-#SOCIAL_AUTH_VK_OAUTH2_SECRET = 'eYRacdSAyJcBXck5jYfQ'
 #LOGIN_REDIRECT_URL = '/'
-#SOCIAL_AUTH_POSTGRES_JSONFIELD = True
+SOCIAL_AUTH_POSTGRES_JSONFIELD = True
 
-#AUTHENTICATION_BACKENDS = [
-#    'social_core.backends.vk.VKOAuth2',   
-#    'django.contrib.auth.backends.ModelBackend', 
-#]
+SOCIAL_AUTH_VK_OAUTH2_KEY = '7546793'
+SOCIAL_AUTH_VK_OAUTH2_SECRET = 'eYRacdSAyJcBXck5jYfQ'
+SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['friends', 'video', 'email']
+
+SOCIAL_AUTH_FACEBOOK_KEY = '710418033072164'
+SOCIAL_AUTH_FACEBOOK_SECRET = '69584208916b507c74bba119579322e3'
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {'fields': 'id, name, email, picture.type(large), link'}
+SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
+    ('name', 'name'),
+    ('email', 'email'),
+    ('picture', 'picture'),
+    ('link', 'profile_url'),
+]
+
+
+AUTHENTICATION_BACKENDS = [
+   'social_core.backends.vk.VKOAuth2',
+   'social_core.backends.facebook.FacebookOAuth2',
+   'django.contrib.auth.backends.ModelBackend', 
+]
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'mainpage'
+LOGOUT_URL = 'logout'
+LOGOUT_REDIRECT_URL = 'login'
 
 
 
@@ -53,7 +71,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mainpage',
-    #'social_django',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -81,7 +99,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                #'social_django.context_processors.backends',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -147,5 +166,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
