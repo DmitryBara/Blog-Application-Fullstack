@@ -31,7 +31,7 @@ friends_params = {
 
 def startpage(request):
 	r = requests.get(url=url_auth, params=params)
-	return render(request, 'startpage.html', {'auth_url_params' : r.url})
+	return render(request, 'startpage.html', {'r' : r })
 
 def main (request):
 	code = request.GET.get('code')
@@ -43,7 +43,8 @@ def main (request):
 	friends_params['access_token'] = access_token
 	friends_json = requests.get(url=url_friends, params=friends_params).text
 	friends_list = json.loads(friends_json)['response']['items']
-
+	l = len(friends_list)
+	
 	i = 0
 	person = friends_list[i]
 	u_id = person.get('id')

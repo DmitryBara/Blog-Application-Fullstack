@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html lang = 'en'>
- <head>
-  <meta charset="utf-8" />
-  <title>{% block title %}HTML5{% endblock %}</title>
+{% extends 'base.html' %}
 
- </head>
- <body>
- {% block content %}
-  <p>Чтобы продолжить, необходимо авторизоваться</p>
- {% endblock %}
 
-<a href={{ auth_url_params }} > Auth Vk </a>
-
-</script>
- </body>
-</html>
+{% block content %}
+<p>Чтобы продолжить, необходимо авторизоваться</p>
+<p> {{ r.headers }} </p>
+<a href={{ r.url }} > Auth Vk </a>
+{% endblock %}
