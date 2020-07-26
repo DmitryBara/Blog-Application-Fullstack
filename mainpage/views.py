@@ -13,7 +13,16 @@ def login(request):
 
 @login_required
 def mainpage(request):
-	return render(request, 'mainpage.html')
+	social = user.social_auth.get(provider='facebook')
+	t = social.extra_data['access_token']
+	return render(request, 'mainpage.html', {'t' : t})
+
+
+
+
+
+
+
 
 url_auth = 'https://oauth.vk.com/authorize'
 url_token = 'https://oauth.vk.com/access_token'
