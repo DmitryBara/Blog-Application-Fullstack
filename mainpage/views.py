@@ -15,24 +15,24 @@ def login(request):
 @login_required
 def mainpage(request):
 	user = request.user
-	for ass in backends.associated:
-		if ass.provider == 'vk-oauth2':
-			social = user.social_auth.get(provider='vk-oauth2')
-			token = social.extra_data['access_token']
-			friends_params = {
-				'access_token': token,
-				'count': '5',
-				'fields': 'city, online, photo_100',
-			}
-			friends_json = requests.get(url=url_friends, params=friends_params).text
-			friends = json.loads(friends_json)['response']['items']						#list
-			return render(request, 'mainpage.html', {'friends' : friends})
-			
-		if ass.provider == 'facebook':
-			social = user.social_auth.get(provider='facebook')
-			break
+	#for ass in backends.associated:
+		#if ass.provider == 'vk-oauth2':
+	social = user.social_auth.get(provider='vk-oauth2')
+	token = social.extra_data['access_token']
+	friends_params = {
+		'access_token': token,
+		'count': '5',
+		'fields': 'city, online, photo_100',
+	}
+	friends_json = requests.get(url=url_friends, params=friends_params).text
+	friends = json.loads(friends_json)['response']['items']						#list
+	return render(request, 'mainpage.html', {'friends' : friends})
+
+		#if ass.provider == 'facebook':
+			#social = user.social_auth.get(provider='facebook')
+			#break
 	
-	return render(request, 'mainpage.html', {'t' : token})
+	#return render(request, 'mainpage.html', {'t' : token})
 
 
 
