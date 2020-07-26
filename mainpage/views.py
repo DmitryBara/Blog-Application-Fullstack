@@ -19,6 +19,7 @@ def mainpage(request):
 		#if ass.provider == 'vk-oauth2':
 	social = user.social_auth.get(provider='vk-oauth2')
 	token = social.extra_data['access_token']
+	url_friends = 'https://api.vk.com/method/friends.get?v=5.52&access_token='
 	friends_params = {
 		'access_token': token,
 		'count': '5',
