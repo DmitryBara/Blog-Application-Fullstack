@@ -13,7 +13,7 @@ def login(request):
 @login_required
 def mainpage(request):
 	user = request.user
-	a = UserSocialAuth.objects.get(user_id=user.id)
+	#a = UserSocialAuth.objects.get(user_id=user.id)
 	if user.social_auth.filter(provider='vk-oauth2'):
 		social = user.social_auth.get(provider='vk-oauth2')
 		token = social.extra_data['access_token']
