@@ -14,6 +14,7 @@ def login(request):
 
 @login_required
 def mainpage(request):
+	user = request.user
 	social = user.social_auth.get(provider='facebook')
 	#t = social.extra_data['access_token']
 	return render(request, 'mainpage.html') #{'t' : t})
