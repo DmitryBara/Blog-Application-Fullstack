@@ -15,9 +15,24 @@ def login(request):
 @login_required
 def mainpage(request):
 	user = request.user
-	social = user.social_auth.get(provider='facebook')
-	t = social.extra_data['access_token']
-	return render(request, 'mainpage.html', {'t' : t})
+	for ass in backends.associated:
+		if ass.provider == 'vk-oauth2':
+			social = user.social_auth.get(provider='vk-oauth2')
+			token = social.extra_data['access_token']
+			friends_params = {
+				'access_token': token,
+				'count': '5',
+				'fields': 'city, online, photo_100',
+			}
+			friends_json = requests.get(url=url_friends, params=friends_params).text
+			friends = json.loads(friends_json)['response']['items']						#list
+			return render(request, 'mainpage.html', {'friends' : friends})
+			
+		if ass.provider == 'facebook':
+			social = user.social_auth.get(provider='facebook')
+			break
+	
+	return render(request, 'mainpage.html', {'t' : token})
 
 
 
@@ -26,26 +41,21 @@ def mainpage(request):
 
 
 
-url_auth = 'https://oauth.vk.com/authorize'
-url_token = 'https://oauth.vk.com/access_token'
-url_friends = 'https://api.vk.com/method/friends.get?v=5.52&access_token='
+# url_auth = 'https://oauth.vk.com/authorize'
+# url_token = 'https://oauth.vk.com/access_token'
+# url_friends = 'https://api.vk.com/method/friends.get?v=5.52&access_token='
 
-params = {
-	'client_id':'7546793',
-	'client_secret': 'eYRacdSAyJcBXck5jYfQ',
-	'redirect_uri': 'https://dmitrybara-mysite1.herokuapp.com/',
-	'response_type': 'code',
-	'scope': 'friends, audio, photos',
-	'display': 'page',
-	'code': None,
-}
+# params = {
+# 	'client_id':'7546793',
+# 	'client_secret': 'eYRacdSAyJcBXck5jYfQ',
+# 	'redirect_uri': 'https://dmitrybara-mysite1.herokuapp.com/',
+# 	'response_type': 'code',
+# 	'scope': 'friends, audio, photos',
+# 	'display': 'page',
+# 	'code': None,
+# }
 
-friends_params = {
-	'v':'5.52',
-	'access_token': None,
-	'count': '5',
-	'fields': 'city, online, photo_100',
-}
+
 
 
 def startpage(request):
