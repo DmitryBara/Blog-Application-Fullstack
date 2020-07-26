@@ -8,12 +8,12 @@
       <h4 class="text-center">Welcome {{ user.username }}</h4>
     </div>
         <div class="col-md-6 text-center">
-            <img src="{{ass.extra_data.picture.data.url}}" alt="" width="150" height="150" style="border-radius: 50%">
+            <img src="{{ ex.picture.data.url }}" alt="" width="150" height="150" style="border-radius: 50%">
         </div>
         <div class="col-md-6 social-container my-2">                 
-          <p> Auth with:  Вконтакте </p>
-          <p> Name:   </p>
-          <p> Provider url: </p>
+          <p> Auth with  Вконтакте </p>
+          <p> with name </p>
+          <p><a href={{ ex.profile_url }}> {{ ex.name }} </a> </p>
         </div>
       {% for f in friends %}
         <div class="col-sm-4 mt-2 text-center">
@@ -28,8 +28,8 @@
 
       <div class="col-sm-12 mt-2 text-center">
         <button class="btn btn-danger">
-        <a href="{% url 'logout' %}">Logout</a>
-      </button>
+          <a href="{% url 'logout' %}">Logout</a>
+        </button>
     </div>
 
   </div>
