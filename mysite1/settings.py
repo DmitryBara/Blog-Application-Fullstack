@@ -15,6 +15,16 @@ SOCIAL_AUTH_VK_EXTRA_DATA = [
     ('email', 'email'),
     ('picture', 'picture'),
     ('link', 'profile_url'),
+    ('first_name', 'first_name'),
+    ('last_name', 'last_name'),
+]
+SOCIAL_AUTH_VK_OAUTH2_EXTRA_DATA = [
+    ('name', 'name'),
+    ('email', 'email'),
+    ('picture', 'picture'),
+    ('link', 'profile_url'),
+    ('first_name', 'first_name'),
+    ('last_name', 'last_name'),
 ]
 
 SOCIAL_AUTH_FACEBOOK_KEY = '710418033072164'
