@@ -5,7 +5,8 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse 
 #from django.urls import reverse
-from social_django.models import AbstractUserSocialAuth, UserSocialAuth, Nonce, Association, Code, DjangoStorage
+#from social_django.models import AbstractUserSocialAuth, UserSocialAuth, Nonce, Association, Code, DjangoStorage
+#from django.contrib.auth.models import User
 
 
 def login(request):
