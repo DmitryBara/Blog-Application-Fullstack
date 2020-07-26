@@ -1,51 +1,40 @@
 <!-- templates/home.html -->
 {% extends 'base.html' %}
-{% block title %} Home {% endblock %}
+{% block title %} Your Friends {% endblock %}
+
 {% block content %}
   <div class="row">
     <div class="col-sm-12 mb-3">
       <h4 class="text-center">Welcome {{ user.username }}</h4>
     </div>
-        <!-- Add from here -->
-    {% for ass in backends.associated %}
-
-      {% if ass.provider == 'facebook' %}
+<!--     {% for ass in backends.associated %}
+      {% if ass.provider == 'facebook' %} -->
         <div class="col-md-6 text-center">
             <img src="{{ass.extra_data.picture.data.url}}" alt="" width="150" height="150" style="border-radius: 50%">
         </div>
         <div class="col-md-6 social-container my-2">                 
-        	<p> Signed in via:  {{ ass.provider }} </p>
-            <p> Name:  {{ ass.extra_data.name }} </p>
-            <p> Provider url: <a href="{{ass.extra_data.profile_url}}">link</a></p>
+          <p> Auth with:  {{ ass.provider }} </p>
+          <p> Name:  {{ ass.extra_data.name }} </p>
+          <p> Provider url: <a href="{{ass.extra_data.profile_url}}">link</a></p>
         </div>
-      {% endif %}
-
-      {% if ass.provider == 'vk-oauth2' %}
-        <div class="col-md-6 text-center">
-            <img src="{{ass.extra_data.picture.data.url}}" alt="" width="150" height="150" style="border-radius: 50%">
+<!--       {% endif %}
+    {% endfor %} -->
+      {% for f in friends %}
+        <div class="col-sm-4 mt-2 text-center">
+          <img src="{{ f.photo_100 }}">
+          <h2><a href="https://vk.com/id{{ f.id }}"> {{ f.first_name }} {{ f.last_name }} </a></h2>
+          <h2>{{ f.city.title }} </h2>
+              <h2>{% if f.online%} Online
+              {% else %} Offline
+              {% endif %}</h2>
         </div>
-        <div class="col-md-6 social-container my-2">                 
-          <p> Signed in via:  {{ ass.provider }} </p>
-            <p> Name:  {{ ass.extra_data.name }} </p>
-            <p> Provider url: <a href="{{ass.extra_data.profile_url}}">link</a></p>
-            <p> FRIENDS :{{ friends }} </p>
-        </div>
-      {% endif %}
+      {% endfor %} 
 
-    {% endfor %}
-
-    <div class="col-sm-12 mt-2 text-right">
-      <button class="btn btn-danger">
-        <a href="{% url 'logout' %}">Make Me </a>
-      </button>
-    </div>
-
-        <div class="col-sm-12 mt-2 text-left">
-      <button class="btn btn-danger">
+      <div class="col-sm-12 mt-2 text-center">
+        <button class="btn btn-danger">
         <a href="{% url 'logout' %}">Logout</a>
       </button>
     </div>
 
-        <!-- End here -->
   </div>
-{% endblock %}}
+{% endblock %}

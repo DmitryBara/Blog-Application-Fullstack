@@ -17,9 +17,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'so)760r*)!ds(24!nv0e4+7u0lnoim==o#qpqy_ftscd91y8zj'
 
 
-#### Authorization in VK with user model. Uncomment strings INSTALLED_APPS and TEMPLATES ####
-
-#LOGIN_REDIRECT_URL = '/'
 SOCIAL_AUTH_POSTGRES_JSONFIELD = True
 
 SOCIAL_AUTH_VK_OAUTH2_KEY = '7546793'
@@ -43,6 +40,7 @@ AUTHENTICATION_BACKENDS = [
    'social_core.backends.facebook.FacebookOAuth2',
    'django.contrib.auth.backends.ModelBackend', 
 ]
+
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'mainpage'
@@ -171,4 +169,4 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
    os.path.join(BASE_DIR, 'static'),
 ]
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
