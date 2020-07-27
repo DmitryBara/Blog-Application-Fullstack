@@ -9,23 +9,7 @@ SOCIAL_AUTH_POSTGRES_JSONFIELD = True
 SOCIAL_AUTH_VK_OAUTH2_KEY = '7546793'
 SOCIAL_AUTH_VK_OAUTH2_SECRET = 'eYRacdSAyJcBXck5jYfQ'
 SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['friends', 'email']
-#SOCIAL_AUTH_VK_OAUTH2_PROFILE_EXTRA_PARAMS = {'fields': 'id, name, email, picture.type(large), link'}
-# SOCIAL_AUTH_VK_EXTRA_DATA = [
-#     ('name', 'name'),
-#     ('email', 'email'),
-#     ('picture', 'picture'),
-#     ('link', 'profile_url'),
-#     ('first_name', 'first_name'),
-#     ('last_name', 'last_name'),
-# ]
-# SOCIAL_AUTH_VK_OAUTH2_EXTRA_DATA = [
-#     ('name', 'name'),
-#     ('email', 'email'),
-#     ('picture', 'picture'),
-#     ('link', 'profile_url'),
-#     ('first_name', 'first_name'),
-#     ('last_name', 'last_name'),
-# ]
+
 
 SOCIAL_AUTH_FACEBOOK_KEY = '710418033072164'
 SOCIAL_AUTH_FACEBOOK_SECRET = '69584208916b507c74bba119579322e3'

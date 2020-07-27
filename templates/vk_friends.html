@@ -5,15 +5,14 @@
 {% block content %}
   <div class="row">
     <div class="col-sm-12 mb-3">
-      <h4 class="text-center">Welcome {{ user.username }} </h4>
+      <h4 class="text-center">Welcome {{ myself.first_name }}{{ myself.last_name }} </h4>
     </div>
         <div class="col-md-6 text-center">
             <img src="{{ myself.photo_200 }}" alt="" width="150" height="150" style="border-radius: 50%">
         </div>
         <div class="col-md-6 social-container my-2">                 
-          <p> Auth with  Вконтакте </p>
-          <p> with name {{ myself.first_name }}{{ myself.last_name }}</p>
-          <p><a href="https://vk.com/id{{ myself.id}}"> click </a> </p>
+          <p> Auth with:  Vk </p>
+          <p> your login: {{ user.username }} </p>
         </div>
       {% for f in friends %}
         <div class="col-sm-4 mt-2 text-center">
