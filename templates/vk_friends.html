@@ -7,14 +7,12 @@
     <div class="col-sm-12 mb-3">
       <h4 class="text-center">Welcome {{ myself.first_name }} {{ myself.last_name }} </h4>
     </div>
-        <div class="col-md-6 text-center">
+        <div class="col-md-6 text-center my-2">
             <img src="{{ myself.photo_200 }}" alt="" width="150" height="150" style="border-radius: 50%">
         </div>
         <div class="col-md-6 social-container my-2">                 
           <p> Auth through Vk </p>
           <p> Login: {{ user.username }} </p>
-        </div>
-        <div height=20px>
         </div>
       {% for f in friends %}
         <div class="col-sm-4 mt-2 text-center">
