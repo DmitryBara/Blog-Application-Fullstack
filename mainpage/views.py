@@ -27,12 +27,11 @@ def mainpage(request):
 		friends_json = requests.get(url=url_friends, params=friends_params).text
 		friends = json.loads(friends_json)['response']['items']
 
-		this_user_id = social.extra_data['id']
-		url_myself = f'https://api.vk.com/method/users.get?v=5.52&user_ids={this_user_id}&fields=photo_200&access_token={token}'
+		myself_id = social.extra_data['id']
+		url_myself = f'https://api.vk.com/method/users.get?v=5.52&user_ids={myself_id}&fields=photo_200&access_token={token}'
 		myself_json = requests.get(url=url_myself).text
-		myself = json.loads(myself_json)['response']['items']
-		return render(request, 'vk_friends.html', {'friends' : friends, 'myself': str(myself)})
-		return HttpResponse 
+		myself = json.loads(myself_json)['response'][0]
+		return render(request, 'vk_friends.html', {'friends' : friends, 'myself': myself})
 	
 	if user.social_auth.filter(provider='facebook'):
 		social = user.social_auth.get(provider='facebook')
