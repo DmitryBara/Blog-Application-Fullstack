@@ -23,6 +23,7 @@ def mainpage(request):
 			'access_token': token,
 			'count': '5',
 			'fields': 'city, online, photo_100',
+			'order': 'random'
 		}
 		friends_json = requests.get(url=url_friends, params=friends_params).text
 		friends = json.loads(friends_json)['response']['items']

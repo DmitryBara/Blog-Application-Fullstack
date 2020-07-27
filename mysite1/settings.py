@@ -22,19 +22,6 @@ SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
     ('link', 'profile_url'),
 ]
 
-# SOCIAL_AUTH_PIPELINE = [
-#     'social_core.pipeline.social_auth.social_details',
-#     'social_core.pipeline.social_auth.social_uid',
-#     'social_core.pipeline.social_auth.auth_allowed',
-#     # Path to your overrided method
-#     # You can set any other valid path.
-#     #'myproject.apps.python-social-auth-overrided.pipeline.social_auth.social_user',
-#     'social_core.pipeline.user.get_username',
-#     'social_core.pipeline.user.create_user',
-#     'social_core.pipeline.social_auth.associate_user',
-#     'social_core.pipeline.social_auth.load_extra_data',
-#     'social_core.pipeline.user.user_details',
-# ]
 
 AUTHENTICATION_BACKENDS = [
    'social_core.backends.vk.VKOAuth2',
@@ -42,14 +29,11 @@ AUTHENTICATION_BACKENDS = [
    'django.contrib.auth.backends.ModelBackend', 
 ]
 
-
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'mainpage'
 LOGOUT_URL = 'logout'
 LOGOUT_REDIRECT_URL = 'login'
 
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = [
@@ -118,12 +102,11 @@ DATABASES = {
     }
 }
 
+# PostgreSQL for deploy on Heroku
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
-# Password validation
-# https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -140,9 +123,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/3.0/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
