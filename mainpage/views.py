@@ -19,7 +19,7 @@ def mainpage(request):
 
 		url_friends = 'https://api.vk.com/method/friends.get'
 		friends_params = {
-			'v': '5.52'
+			'v': '5.52',
 			'access_token': token,
 			'count': '5',
 			'fields': 'city, online, photo_100',
@@ -28,10 +28,11 @@ def mainpage(request):
 		friends = json.loads(friends_json)['response']['items']
 
 		this_user_id = social.extra_data['id']
-		url_myself = f'https://api.vk.com/method/friends.get?v=5.52&user_ids={this_user_id}&fields=photo_200&access_token{token}'
-		myself_json = requests.get(url=url_myself.text)
+		url_myself = f'https://api.vk.com/method/friends.get?v=5.52&user_ids={this_user_id}&fields=photo_200&access_token={token}'
+		myself_json = requests.get(url=url_myself).text
 		myself = json.loads(myself_json)['response']['items']
 		return render(request, 'vk_friends.html', {'friends' : friends, 'myself': str(myself)})
+		return HttpResponse 
 	
 	if user.social_auth.filter(provider='facebook'):
 		social = user.social_auth.get(provider='facebook')
