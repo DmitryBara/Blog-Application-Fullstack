@@ -3,9 +3,9 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-import locale
+# import locale
 from datetime import datetime, timedelta
-locale.setlocale(locale.LC_TIME, 'ru_RU.UTF-8')
+# locale.setlocale(locale.LC_TIME, 'ru_RU.UTF-8')
 
 
 #save in MEDIA_ROOT/article-img/author_id_2324/filename.jpg /// не определит instance.id так как он еще не создан
