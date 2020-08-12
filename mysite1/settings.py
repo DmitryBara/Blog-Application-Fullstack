@@ -30,7 +30,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'mainpage'
+LOGIN_REDIRECT_URL = 'my_profile'
 LOGOUT_URL = 'logout'
 LOGOUT_REDIRECT_URL = 'login'
 
@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mainpage',
     'social_django',
+    'blog',
+    'jquery',  ####
 ]
 
 MIDDLEWARE = [
@@ -83,6 +85,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'social_django.context_processors.backends',
                 'social_django.context_processors.login_redirect',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -124,7 +127,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-ru' #'en-us'
 
 TIME_ZONE = 'Europe/Moscow'
 
@@ -140,4 +143,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
    os.path.join(BASE_DIR, 'static'),
 ]
-#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

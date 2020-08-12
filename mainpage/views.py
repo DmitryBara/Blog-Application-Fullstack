@@ -5,13 +5,17 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.http import HttpResponse 
 from social_django.models import UserSocialAuth
+from blog.models import Article
+from blog.forms import ArticleForm
+
 
 @user_passes_test(lambda u: u.is_anonymous, login_url='/')
 def login(request):
-	return render(request, 'login.html')
+	return render(request, 'pa_login.html')
+
 
 @login_required
-def mainpage(request):
+def my_profile(request):
 	user = request.user
 	if user.social_auth.filter(provider='vk-oauth2'):
 		social = user.social_auth.get(provider='vk-oauth2')
@@ -32,9 +36,14 @@ def mainpage(request):
 		url_myself = f'https://api.vk.com/method/users.get?v=5.52&user_ids={myself_id}&fields=photo_200&access_token={token}'
 		myself_json = requests.get(url=url_myself).text
 		myself = json.loads(myself_json)['response'][0]
-		return render(request, 'vk_friends.html', {'friends' : friends, 'myself': myself})
+		return render(request, 'pa_vk.html', {'friends' : friends, 'myself': myself})
 	
 	if user.social_auth.filter(provider='facebook'):
 		social = user.social_auth.get(provider='facebook')
 		ex = social.extra_data
-		return render(request, 'fb_develop.html', {'ex': ex})
+		return render(request, 'pa_fb.html', {'ex': ex})
+
+
+
+
+

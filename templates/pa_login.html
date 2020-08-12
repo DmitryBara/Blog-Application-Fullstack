@@ -1,0 +1,27 @@
+ {% extends 'kod_base.html' %}
+
+
+{% block content %}
+
+<div class="sign-in">
+    <div class="col-md-8 mx-auto sign-in-cont my-2 order-md-1">
+        <h1>Авторизация</h1>
+        <button class="btn btn-info" onclick="document.location=`{% url 'social:begin' 'vk-oauth2' %}` ">
+            <a>Login with VK</a>
+        </button>
+        <button class ="btn btn-primary" onclick="document.location=`{% url 'social:begin' 'facebook' %}` ">
+            <a>Login with Facebook</a>
+        </button>
+        <button class="btn btn-danger">
+            <a>Login with Django (soon...)</a>
+        </button>
+    </div>
+</div>
+
+<script>
+    var h = document.getElementById('hat').clientHeight + document.getElementById('hr').clientHeight;
+    document.documentElement.style.height = document.documentElement.clientHeight - h +'px'
+    document.body.style.height = document.documentElement.clientHeight-h +'px'
+</script>
+
+{% endblock %}

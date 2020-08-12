@@ -1,0 +1,101 @@
+{% extends 'kod_base.html' %}
+{% load static %}
+
+{% block title %} Редактировать статью {% endblock %}
+
+{% block content %} 
+
+<form enctype="multipart/form-data" method="post">
+
+{% csrf_token %}
+
+{% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+
+<div class='add'>
+	<h1>Редактировать статью</h1>
+	<div class="title">
+		{{ form.title }}
+		<span>
+			<input type="submit" class="btn btn-primary mb-2" value="Сохранить">
+		</span>
+	</div>
+	<div class="article">
+		{{ form.text }}
+		<div class="brd" id="image-preview"> 
+			<h3> Загрузить изображение </h3>
+			  	<img src="" alt="loading..." id="image-preview__image">
+			    <!-- <input required type="file" class="input-file" name="inpFile" accept=".png, .jpg, .jpeg" id="inpFile"> -->
+			    <div id='image-hidden-block' style="position: absolute; display:none"> 
+			    	{{ form.image }} 
+			    </div>
+
+			    <label for="inpFile" class="btn btn-primary" id="image-preview__label">
+			      <h5>Файл</h5>
+			    </label>
+
+			    <img src="{% static 'images/close.png' %}" id='image-remove'>
+		</div>		
+	</div>
+
+	<script>
+		const inpFile = document.getElementById("inpFile")
+		const previewContainer = document.getElementById("image-preview")
+		const previewImage = document.getElementById("image-preview__image")
+		const previewButton= document.getElementById("image-preview__label")
+		const removeImage = document.getElementById("image-remove")
+
+		// Need for already loaded picture
+		alreadyInFormImageSrc = document.querySelector("#image-hidden-block > a:first-of-type").getAttribute('href');
+		previewButton.style.display = "none"
+		removeImage.style.display = "inline-block"
+		previewImage.style.display = "inline-block"		
+		previewImage.setAttribute("src", alreadyInFormImageSrc)
+
+
+		removeImage.addEventListener('click', function () {
+					inpFile.value = ""
+					removeImage.style.display = "none"
+					previewImage.style.display = "none"
+					previewButton.style.display = "block"
+				}, false);
+
+
+		inpFile.addEventListener("change", function() {
+			let file = this.files[0]
+			if (file) {
+				const reader = new FileReader ()
+				previewButton.style.display = "none"
+				previewImage.style.display = "inline-block"
+
+				reader.addEventListener("load", function () {
+					previewImage.setAttribute("src", this.result)
+				})
+				reader.readAsDataURL(file)
+
+				removeImage.style.display = "inline-block"
+
+
+			} else {
+				previewButton.style.display = null
+				previewImage.style.display = null
+				previewImage.setAttribute("src", "")
+			}
+		})
+	</script>
+</div>
+</form>
+
+{% endblock %}

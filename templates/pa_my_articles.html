@@ -1,0 +1,82 @@
+{% extends 'pa_helper.html' %}
+{% load static %}
+
+{% block titleAAA %} main title here if you need {% endblock %}
+
+{% block pa-window-title%} Список ваших статей ({{ user_articles.count }}) {% endblock %}
+
+{% block pa-window %}
+
+
+<script>
+  var i = 0
+  var submitArticleID = new Object()
+
+  addToSubmitArticleID = () => {
+    submitArticleID[i++] = articleID
+  }
+</script>
+
+
+<div class='my-articles-cont'>
+    {% for A in user_articles %}
+          <div class='one-article-block'>
+
+              <form id="form" enctype="multipart/form-data" method="post" 
+              style="display:none" action="{% url 'change_visible' article_id=A.id %}">
+                  {% csrf_token %}
+                  {{ forms|get_item:A.id }}
+
+                  <script>
+                      var articleID = {{ A.id }}
+                      addToSubmitArticleID()
+                  </script>
+
+                  <input type="submit" name="submit" class="btn btn-primary mb-2" 
+                  value="Опубликовать">
+              </form>
+
+                  <h1>
+                      {% if A.hiden == False %}
+                      <a href="{% url 'one_article' article_id=A.id %}">{{ A.title }}</a>
+                      {% else %}
+                      <a href="{% url 'one_article' article_id=A.id %}" style="color:#B0E0E6">{{ A.title }}</a>
+                      {% endif %}
+                  </h1>
+                  <h2>
+                      <a href="{% url 'edit_article' article_id=A.id %}">Редактировать</a> / 
+                      <a href="{% url 'delete_article' article_id=A.id %}" id='delete_article'
+                      onclick="return confirm('Удалить статью: `{{ A.title }}` ?') ? true : false;">Удалить</a> / 
+                      <a href="#" onclick="change_visible({{ A.id }}); return false;"> 
+                          {% if A.hiden == False %} Скрыть из блога
+                          {% else %} Показать в блоге
+                          {% endif %}
+                      </a>
+
+
+                  </h2>
+
+          </div>
+    {% endfor %}
+</div>
+
+<script>
+
+var submits = document.querySelectorAll('input[name="submit"]');
+var submitsDict = new Object()
+
+for (i in submitArticleID) {
+  submitsDict[submitArticleID[i]] = submits[i]
+}
+
+// Key - articleID; Value - submit Button
+console.log(submitsDict)
+
+change_visible = function (articleID, s=submitsDict) {
+  s[articleID].click()
+}
+
+</script>
+
+
+{% endblock %}
