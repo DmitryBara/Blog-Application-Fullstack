@@ -1,18 +1,31 @@
-import os
+import os, environ
+
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SECRET_KEY = 'so)760r*)!ds(24!nv0e4+7u0lnoim==o#qpqy_ftscd91y8zj'
 
+
+# Reading .env file
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+env = environ.Env()
+
+
+DEBUG= True
+SECRET_KEY = env('SECRET_KEY')
+
+
+AWS_ACCESS_KEY_ID=env('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY=env('AWS_SECRET_ACCESS_KEY')
+S3_BUCKET=env('S3_BUCKET')
 
 SOCIAL_AUTH_POSTGRES_JSONFIELD = True
 
 SOCIAL_AUTH_VK_OAUTH2_KEY = '7546793'
-SOCIAL_AUTH_VK_OAUTH2_SECRET = 'eYRacdSAyJcBXck5jYfQ'
+SOCIAL_AUTH_VK_OAUTH2_SECRET = env('SOCIAL_AUTH_VK_OAUTH2_SECRET')
 SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['friends', 'email']
 
-
 SOCIAL_AUTH_FACEBOOK_KEY = '710418033072164'
-SOCIAL_AUTH_FACEBOOK_SECRET = '69584208916b507c74bba119579322e3'
+SOCIAL_AUTH_FACEBOOK_SECRET=env('SOCIAL_AUTH_FACEBOOK_SECRET')
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {'fields': 'id, name, email, picture.type(large), link'}
 SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
@@ -34,10 +47,8 @@ LOGIN_REDIRECT_URL = 'my_profile'
 LOGOUT_URL = 'logout'
 LOGOUT_REDIRECT_URL = 'login'
 
-DEBUG = True
 
 ALLOWED_HOSTS = [
-    '127.0.0.1',
     'localhost',
     'dmitrybara-mysite1.herokuapp.com',
     ]
@@ -50,10 +61,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mainpage',
+    'jquery',
     'social_django',
+    ####
     'blog',
-    'jquery',  ####
+    'mainpage',
+
 ]
 
 MIDDLEWARE = [

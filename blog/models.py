@@ -1,19 +1,22 @@
 import os
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import datetime, timedelta
+
 
 
 # import locale
-from datetime import datetime, timedelta
 # locale.setlocale(locale.LC_TIME, 'ru_RU.UTF-8')
 
 
-#save in MEDIA_ROOT/article-img/author_id_2324/filename.jpg /// не определит instance.id так как он еще не создан
+# it's not necessery now because I load image to AWS
+# save in MEDIA_ROOT/article-img/...
 def get_image_path(instance, filename):
-    return os.path.join('articles-img', str(instance.pub_date), filename)
+    return os.path.join('articles-img', instance.uuid, filename)
 
 
 class Article(models.Model):
+    uuid = models.CharField(max_length=50, default='None')
     title = models.CharField(max_length=50, db_index=True)
     text = models.TextField(max_length=10000)
     pub_date = models.DateTimeField(null=True, auto_now_add=True)
@@ -30,6 +33,18 @@ class Article(models.Model):
 
     def ru_date(self):
         return ((self.pub_date + timedelta(hours=3)).strftime("%d %B %Y %H:%M"))
+
+    def src_aws(self):
+        return ("https://mysite1-bucket.s3.amazonaws.com/" + self.uuid)
+
+
+
+
+
+
+
+
+
 
 
 

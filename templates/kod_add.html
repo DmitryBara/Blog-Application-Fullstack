@@ -2,12 +2,10 @@
 {% load static %}
 
 {% block title %} Добавить статью {% endblock %}
-
 {% block content %} 
 
-<form enctype="multipart/form-data" method="post">
+<form enctype="multipart/form-data" method="post">{% csrf_token %}
 
-{% csrf_token %}
 
 {% if form.errors %}
     {% for field in form %}
@@ -22,9 +20,7 @@
             <strong>{{ error|escape }}</strong>
         </div>
     {% endfor %}
-
 {% endif %}
-
 
 
 <div class='add'>
@@ -40,117 +36,23 @@
 		<div class="brd" id="image-preview"> 
 			<h3> Загрузить изображение </h3>
 			  	<img src="" alt="loading..." id="image-preview__image">
-			  	<!-- --- For Script. Atrributes (class,id...) identified in forms.py ---- -->
+			  	<!-- --- For JavaScript. All Atrributes (class,id...) has been set in forms.py ---- -->
 			    <!-- <input required type="file" class="input-file" name="inpFile" accept=".png, .jpg, .jpeg" id="inpFile"> -->
+
 			    {{ form.image }}
+
 			    <label for="inpFile" class="btn btn-primary" id="image-preview__label">
 			      <h5>Файл</h5>
 			    </label>
 			    <img src="{% static 'images/close.png' %}" id='image-remove'>
+			    <span id="progress-status" style="color: #CDCDCD; font-size:15px; display:none"></span>
 		</div>		
 	</div>
-	
-
-	<script>
-
-		// For Img Label (show or hide)
-		const inpFile = document.getElementById("inpFile")
-		const previewContainer = document.getElementById("image-preview")
-		const previewImage = document.getElementById("image-preview__image")
-		const previewButton= document.getElementById("image-preview__label")
-		const removeImage = document.getElementById("image-remove")
-
-		// For Submit Button Disable
-		var form = document.querySelector('form')
-		var inputs = document.querySelectorAll('#id_title, #id_text')
-		var register = document.querySelector('input[type="submit"]')
-
-		// JS object checking inputs
-		const disabledFields = new Object()
-		disabledFields.title = true
-		disabledFields.text = true
-		disabledFields.image = true
-
-		register.addEventListener('submit', ()=>
-			{checkOnlyInputs = () => inputs.forEach(function(input, index) {
-				if (input.value === '' || !input.value.replace(/\s/g, '').length) {
-					disabledFields[input.name] = true
-				}
-				else {
-					disabledFields[input.name] = false
-				}
-			})
-			console.log(disabledFields)
-		})
-
-		// Make Submit button active or disable
-		checkSubmit = () => {
-			if ((!disabledFields.title) && (!disabledFields.text) && (!disabledFields.image))
-				register.removeAttribute('disabled')
-			 else 
-				register.setAttribute('disabled', 'disabled')
-			}
-
-		checkSubmit()
-
-		// Show or Hide IMG and checkSubmit() 
-		inpFile.addEventListener("change", function() {
-			checkSubmit()
-			let file = this.files[0]
-			if (file) {
-				const reader = new FileReader ()
-				previewButton.style.display = "none"
-				previewImage.style.display = "inline-block"
-
-				reader.addEventListener("load", function () {
-					previewImage.setAttribute("src", this.result)
-				})
-
-				reader.readAsDataURL(file)
-
-				removeImage.style.display = "inline-block"
-
-				disabledFields.image = false
-				checkSubmit()
-
-				removeImage.addEventListener('click', function () {
-					inpFile.value = ""
-					removeImage.style.display = "none"
-					previewImage.style.display = "none"
-					previewButton.style.display = "block"
-
-					disabledFields.image = true
-					checkSubmit()
-
-				}, false);
-
-			} else {
-				previewButton.style.display = null
-				previewImage.style.display = null
-				previewImage.setAttribute("src", "")
-				
-				disabledFields.image = true
-				checkSubmit()
-			}
-		})
-
-
-		// checkSubmit() for fields (title, text)
-		form.addEventListener('keyup', function(e) {
-			inputs.forEach(function(input, index) {
-				if (input.value === '' || !input.value.replace(/\s/g, '').length) {
-					disabledFields[input.name] = true
-					checkSubmit()
-				}
-				else {
-					disabledFields[input.name] = false
-					checkSubmit()
-				}
-			})
-		})
-	</script>
-
 </div>
+
 </form>
+
+<script src="{% static 'js/uploadToAWS.js' %}">OLOLO</script>
+<script src="{% static 'js/imgSendChangeBlock.js' %}">BLABLABLA</script>
 
 {% endblock %}

@@ -6,11 +6,12 @@
 <div class='grey-cont'> 
 	<div class='center-cont-one'>
 		<h1> {{ article.title }} </h1>
-		<img src="/media/{{article.image}}" alt='picture'>
+		<img src="{{article.src_aws}}" alt='...'>
 		<span>{{ article.text }}</span>
 		<hr style="min-width: 0">
 		<h4> Автор: {{ article.author.username}}</h4>
 		<h4> Опубликовано:  {{ article.ru_date}}</h4>
+		<h4> UUID: {{ article.uuid }}
 	</div>
 </div>
 

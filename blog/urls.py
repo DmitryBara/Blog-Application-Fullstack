@@ -1,4 +1,4 @@
-from . import views
+from . import views, utils
 from django.urls import path
 
 urlpatterns = [
@@ -10,4 +10,6 @@ urlpatterns = [
 	path('delete_article/<int:article_id>', views.delete_article, name='delete_article'),
 
 	path('pa/my_articles/', views.my_articles, name = 'my_articles'),
+	
+	path('sign_s3/', utils.sign_s3, name = 'sign_s3'),
 ]

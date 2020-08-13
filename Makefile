@@ -9,5 +9,16 @@ mami:
 mi:
 	python3 manage.py migrate
 
-usedb:
+db:
 	psql mysite1_db;
+
+
+
+
+
+1:
+	git add -A
+2:
+	git commit -m "dev"
+3:
+	git push heroku master

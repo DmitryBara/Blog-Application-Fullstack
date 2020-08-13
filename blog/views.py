@@ -1,3 +1,5 @@
+import uuid
+
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from blog.models import Article
@@ -7,15 +9,17 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.urls import reverse
 
 
-# Test For user_passes_test @decorator
-def owner_of_article(user, article_id):
-    user_articles = Article.objects.filter(author_id=user.id, id=article_id)
-    if user_articles:
-        return True
-    else:
-        return False
 
-#return render(request, 'blya.html', {'y': [1, 2, 3, 4]})
+
+
+# Test For user_passes_test @decorator
+# def owner_of_article(user, article_id):
+#     user_articles = Article.objects.filter(author_id=user.id, id=article_id)
+#     if user_articles:
+#         return True
+#     else:
+#         return False
+
 # My Articles from "Personal Account" block
 @login_required
 def my_articles(request):
@@ -72,12 +76,14 @@ def add_article(request):
         if form.is_valid():
             article = form.save(commit=False)
             article.author_id = request.user.id
+            article.uuid = request.session['a_uid']
             article.save()
             url = article.get_url()
             return HttpResponseRedirect(url)
 
     else:
         form = ArticleForm()
+        request.session['a_uid'] = uuid.uuid4().hex
     context= {'form': form, 'user': request.user}
     return render(request, 'kod_add.html', context)
 
@@ -129,6 +135,9 @@ def delete_article (request, article_id):
     article.delete()
     url = reverse('my_articles')
     return HttpResponseRedirect(url)
+
+
+
 
 
 

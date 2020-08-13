@@ -569,21 +569,21 @@ hr {
 
 @font-face {
   font-family: "CirceRounded-AltBold";  
-  src: url("../fonts/CirceRounded-AltBold.ttf") format("truetype"); 
+  src: url("../fonts/CirceRounded-AltBold.a3ad633a0983.ttf") format("truetype"); 
   font-style: normal; 
   font-weight: normal;
  }
 
  @font-face {
   font-family: "CirceRounded";  
-  src: url("../fonts/CirceRounded-Regular.ttf") format("truetype"); 
+  src: url("../fonts/CirceRounded-Regular.b651ece73597.ttf") format("truetype"); 
   font-style: normal; 
   font-weight: normal;
  }
 
  @font-face {
     font-family: "MuseoCyrl";
-    src: url("../fonts/Museocyrl500.ttf") format("truetype"); 
+    src: url("../fonts/Museocyrl500.daec729b207d.ttf") format("truetype"); 
     font-style: normal;
     font-weight: normal;
 }
