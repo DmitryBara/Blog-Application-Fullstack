@@ -1,0 +1,589 @@
+/*. ------------- Site Header -------------*/
+
+a.disabled {
+pointer-events: none; /* делаем элемент неактивным для взаимодействия */
+cursor: default; /*  курсор в виде стрелки */
+color: #888;/* цвет текста серый */
+}
+
+
+hr {
+  border: none;
+  background-color: #CDCDCD;
+  height: 2px;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: 0;
+  margin-left: 0;
+  padding-right: 0;
+  min-width: 1300px;
+}
+
+.btn a, .btn a:hover {
+  color: white;
+  text-decoration: none ;
+}
+
+.hat {
+  width: 100%;
+  min-width: 1300px;
+  height: 80px;
+  background-color: #FFFFFF;
+  white-space: nowrap;
+}
+
+.hat img {
+  height: 72px;
+  position: absolute;
+  left: 90px;
+}
+
+.hat span {
+  margin-left: 270px;
+  height:  80px;
+  line-height:  80px;
+  font-family: "CirceRounded-AltBold";
+  font-size: 22px;
+}
+
+.hat button {
+  height: 32px;
+  width: 166px;
+  border: none;
+  border-radius: 6px;
+  background-color: #315AF2;
+  float: right;
+  margin-top: 26px;
+  margin-right: 70px;
+  display: inline-block;
+}
+
+
+/*-------Authorize------*/
+.sign-in {
+  width: 100%;
+  min-width: 700px;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.sign-in h1 {
+  font-family: "MuseoCyrl";
+  font-size: 35px;
+  padding-top: 10px;
+}
+
+.sign-in .sign-in-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 300px;
+  max-width: 300px;
+}
+
+.sign-in .sign-in-cont .btn {
+  margin-bottom: 6px;
+}
+
+
+/*--------Personal Account (PA)------*/
+
+.pa-cont {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.pa-cont .pa-navigation {
+  margin-left: 110px;
+  padding-top: 50px;
+  height: 100%;
+  min-width: 250px;
+  display: inline-block;
+  border-right: 2px solid #CDCDCD;
+}
+
+.pa-cont .pa-navigation h2 {
+  font-family: "CirceRounded-AltBold";
+  font-size: 22px;
+}
+
+.pa-cont .pa-window {
+  display: inline-block;
+  min-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  vertical-align: top;
+  margin-top: 20px;
+}
+
+.pa-cont .pa-window h3 {
+  text-align: center;
+  font-family: "MuseoCyrl";
+  font-size: 35px;
+  padding-top: 10px;
+  color: #CDCDCD;
+}
+
+
+
+/*------PA // profile (through social-auth FB, VK) ------*/
+
+.card {
+  width: 750px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  border: 0px;
+}
+
+.card img {
+  border: 3px solid #282c34;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.card .vk-info {
+  display: inline-block;
+  margin-left: 20px;
+  vertical-align: middle;
+}
+
+.card .vk-info h6 {
+  font-family: "MuseoCyrl";
+  font-size: 25px;
+}
+
+.card .one-friend-vk {
+  max-width: 300px;
+  display: inline-block;
+}
+
+.card .one-friend-vk h1 {
+  font-family: "CirceRounded-AltBold";
+  font-size: 22px;
+  /*color: #E9399C;???????*/
+}
+
+.card .one-friend-vk h2  {
+  font-family: "MuseoCyrl";
+  font-size: 14px;
+  color: #315AF2;
+  line-height: 12px;
+}
+
+/*------------------ PA // My Articles -----------------*/
+
+.my-articles-cont {
+  margin-left: 0px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.my-articles-cont .one-article-block {
+  margin: 10px;
+  height: 50px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.my-articles-cont .one-article-block a {
+  color : inherit;
+}
+
+.my-articles-cont .one-article-block h1{
+  margin-top:7px;
+  font-family: "MuseoCyrl";
+  font-size: 20px;
+  color: #315AF2;
+  margin-bottom: 0px;
+}
+
+.my-articles-cont .one-article-block h2{
+  margin-top: 2px;
+  font-family: "CirceRounded";
+  font-size: 12px;
+  color: #CDCDCD;
+}
+
+/* --------------- Blog // Add --------------*/
+
+.add {
+  margin-left: 110px;
+}
+
+.add h1 {
+  margin-top: 60px;
+  font-family: "MuseoCyrl";
+  font-size: 45px;
+  letter-spacing: -0.416667px;
+  font-weight: bold;
+  color: #315AF2;
+  white-space: nowrap;
+}
+
+.add .title {
+  margin-top: 40px;
+  white-space: nowrap;
+}
+
+.add .title input {
+  width: 881px;
+  height: 50px;
+  display: inline-block;
+}
+
+.add .title .btn {
+  margin-top: 1px;
+  margin-left: 20px;
+  width: 159px;
+  height: 47px;
+  background-color: #E9399C;
+  border: none;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.add .title span {
+  font-family: "MuseoCyrl";
+  font-size: 18px;
+  padding-top: 5px;
+
+}
+
+.add .article {
+  margin-top: 40px;
+  white-space: nowrap;
+}
+
+.add .article textarea {
+  width: 881px;
+  height: 500px;
+  display: inline-block;
+}
+
+
+/*.  ------------------- Blog // Add // Container for IMG ---------------*/
+
+.add .article .brd {
+  width: 300px;
+  height: auto;
+  border: 1px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-style: dashed;
+  border-color: #CDCDCD;
+  padding: 10px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+
+.add .article .brd h3 {
+  font-family: "CirceRounded-AltBold";
+  font-size: 24px;
+  text-align: center;
+  color: #315AF2;
+}
+
+.add .article .brd .btn {
+    width: 120px;
+    height: 35px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.add .article .brd h5 {
+  font-family: "MuseoCyrl";
+  font-style: normal;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+
+/*. -------  upload IMG //  link button to the LABEL // doing SCRIPT // delete IMG  --------*/
+
+#image-preview__image {
+  width: 100%;
+  display: none;
+}
+
+#image-remove {
+  width: 16px;
+  margin-left: -16px;
+  display: none;
+  vertical-align: top;
+  position:absolute;
+}
+
+.add .article .brd .btn-primary  {
+  width: 120px;
+  height: 35px;
+  background-color: #315AF2;
+  border: none;
+  border-radius: 3px;
+}
+
+.add .article .brd .input-file {
+  width: .1px;
+  height: .1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index:-1
+}
+
+
+/*-----------Blog // Mainpage // Last article (ontop) ---------------*/
+
+.top-article {
+  max-height: 430px;
+  margin-left: 110px; 
+  white-space: nowrap;
+  min-width: 1000px;
+}
+
+.top-article .new-text {
+  width:700px;
+  height: 400px;
+  display:inline-block;
+  vertical-align: middle;
+}
+
+.top-article .new-text h4 {
+  margin-top: 40px;
+  font-family: "CirceRounded";
+  font-size: 16px;
+  color: #E9399C;
+}
+
+.top-article .new-text h1 {
+  margin-top: 10px;
+  margin-bottom: 25px;
+  font-family: "MuseoCyrl";
+  font-weight: bold;
+  font-size: 44px;
+  white-space: pre-wrap;
+  align-items: center;
+  color: #315AF2;
+  letter-spacing: 1px;
+}
+
+
+.top-article .new-text .preview-text {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  max-height: 100px;
+  font-family: "CirceRounded";
+  font-size: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+
+.top-article .new-text .btn {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  width: 150px;
+  height: 58px;
+  background: #315AF2;
+  border-radius: 6px;
+  vertical-align: bottom;
+}
+
+.top-article .new-text .btn span {
+  font-family: "MuseoCyrl";
+  font-size: 32px;
+  line-height: 38px;
+}
+
+
+.top-article img {
+  width: auto;
+  height: auto;
+  max-width: 300px;
+  max-height: 300px;
+  display:inline-block;
+  vertical-align: middle;
+  margin-left: 70px;
+}
+
+
+/*-----------Blog // Mainpage // Other Articles----------*/
+
+.all-articles {
+  margin-left: 120px; 
+  min-width: 1300px;
+  position: relative;
+}
+
+.all-articles h1 {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-size: 32px;
+  font-family: "MuseoCyrl";
+  font-weight: bold;
+  color: #315AF2;
+}
+
+.all-articles .one-art {
+  width: 335px;
+  height: 310px;
+  border: 2px;
+  border-style: solid;
+  display: inline-block;
+  border-color: #CDCDCD;
+  margin-right: 90px;
+  margin-bottom: 50px;
+}
+
+.all-articles .one-art h6 {
+  position: absolute;
+  margin-top: -20px;
+  font-family: "CirceRounded";
+  font-size: 12px;
+  line-height: 20px;
+  color: #979797;
+}
+
+.all-articles .one-art .one-art-img {
+  height:200px;
+}
+
+.all-articles .one-art .one-art-img img {
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  height: auto;
+  max-width: 250px;
+  max-height: 150px;
+  display: block;
+  transform: translateY(-50%);
+  top: 50%; 
+  position: relative;
+}
+
+
+.all-articles .one-art .one-art-title {
+  width:330px;
+  height:100px;
+  padding-right: 30px;
+  padding-left: 30px;
+  vertical-align: middle;
+  display: table-cell;
+  text-align: center;
+}
+
+.all-articles .one-art .one-art-title span {
+  font-family: "CirceRounded";
+  font-size: 24px;
+  line-height: 120%;
+  color: #315AF2;
+}
+
+
+/*----Blog // Mainpage // Paginator (with flexbox center)----*/
+.paginator {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    align-content: center; 
+    justify-content: center; 
+    overflow: auto;
+}
+
+.paginator .pagination .active {
+  text-decoration: underline;
+}
+
+ /*----- Blog // One Article ------*/
+
+.grey-cont {
+  background-color: #E5E5E5; 
+  min-height:100%;
+  display: flex;
+  justify-content: center; 
+}
+
+.grey-cont .center-cont-one {
+  width:540px;
+}
+
+.grey-cont .center-cont-one h1 {
+  margin-top: 60px;
+  font-family: "MuseoCyrl";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 128%;
+  letter-spacing: -0.416667px;
+  color: #315AF2;
+}
+
+.grey-cont .center-cont-one img {
+  margin-top: 30px;
+  margin-bottom: 50px;
+  width: 540px;
+}
+
+.grey-cont .center-cont-one span {
+  font-family: "CirceRounded";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 17px;
+  line-height: 128%;
+  color: #404040;
+}
+
+.grey-cont .center-cont-one hr {
+  border: none;
+  background-color: #CDCDCD;
+  height: 2px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.grey-cont .center-cont-one h4 {
+  font-family: "CirceRounded";
+  font-size: 17px;
+  line-height: 128%;
+}
+
+
+
+
+
+
+/*------- All Fonts ------*/
+
+@font-face {
+  font-family: "CirceRounded-AltBold";  
+  src: url("../fonts/CirceRounded-AltBold.ttf") format("truetype"); 
+  font-style: normal; 
+  font-weight: normal;
+ }
+
+ @font-face {
+  font-family: "CirceRounded";  
+  src: url("../fonts/CirceRounded-Regular.ttf") format("truetype"); 
+  font-style: normal; 
+  font-weight: normal;
+ }
+
+ @font-face {
+    font-family: "MuseoCyrl";
+    src: url("../fonts/Museocyrl500.ttf") format("truetype"); 
+    font-style: normal;
+    font-weight: normal;
+}

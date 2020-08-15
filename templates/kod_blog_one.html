@@ -1,0 +1,23 @@
+{% extends 'kod_base.html' %}
+{% load static %}
+{% block title %} {{ article.title }} {% endblock %}
+
+{% block content %}
+<div class='grey-cont'> 
+	<div class='center-cont-one'>
+		<h1> {{ article.title }} </h1>
+		<img src="{{article.src_aws}}" alt='...'>
+		<span>{{ article.text }}</span>
+		<hr style="min-width: 0">
+		<h4> Автор: {{ article.author.username}}</h4>
+		<h4> Опубликовано:  {{ article.ru_date}}</h4>
+		<h4> UUID: {{ article.uuid }}
+	</div>
+</div>
+
+<script>
+	var h = document.getElementById('hat').clientHeight + document.getElementById('hr').clientHeight;
+	document.documentElement.style.height = document.documentElement.clientHeight - h +'px'
+	document.body.style.height = document.documentElement.clientHeight-h +'px'
+</script>
+{% endblock %}

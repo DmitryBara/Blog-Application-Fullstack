@@ -1,0 +1,47 @@
+{% extends 'kod_blog_new_head.html' %}
+{% load static %}
+{% block title %} Все статьи {% endblock %}
+
+{% block all-articles %}
+
+<div class="all-articles">
+	<h1>Другие статьи</h1>
+	{% for A in page.object_list %}
+
+	<div class="one-art">
+		<h6>{{ A.ru_date }}</h6>
+		<div class='one-art-img'>
+			<img src="{{A.src_aws}}" alt='picture'>
+		</div>
+		<div class='one-art-title'>
+			<a href="{{ A.id }}">
+				<span>{{ A.title }}</span>
+			</a>
+		</div>
+	</div>
+
+	{% endfor %}
+</div>
+
+
+<div class="paginator">
+	<nav>
+		<ul class="pagination">
+		{% for p in paginator.page_range %}
+
+			{% if p == page.number %}
+				<li class="active">
+			{% else %}
+				<li>
+			{% endif %}
+
+			<a href="{{ paginator.baseurl }}{{ p }}">
+				{{ p }} 
+			</a>
+				</li> &nbsp
+		{% endfor %}
+		</ul>
+	</nav>
+</div>
+
+{% endblock %}

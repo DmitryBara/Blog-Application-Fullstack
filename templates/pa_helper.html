@@ -1,0 +1,33 @@
+{% extends 'kod_base.html' %}
+{% load static %}
+{% block title %}Личный кабинет{% endblock %}
+
+{% block content %}
+
+
+<div class="pa-cont">
+
+	<div class="pa-navigation" id="pa-navigation">
+		<h2><a href="{% url 'my_profile' %}"> Мой профиль </a></h2>
+		<h2><a href="{% url 'my_articles' %}"> Мои статьи </a></h2>
+		<h2> <a href="{% url 'logout' %}"> Выход из аккаунта </a> </h2>
+	</div>
+
+	<div class="pa-window" id="pa-window">
+
+		<h3> {% block pa-window-title %} <!-- Some Text Cath From Next Temlates -->  {% endblock %}</h3>
+
+		{% block pa-window %}  
+		{% endblock %}
+
+	</div>
+
+</div>
+
+<script>
+	var h = document.getElementById('hat').clientHeight + document.getElementById('hr').clientHeight;
+	document.documentElement.style.height = document.documentElement.clientHeight - h +'px'
+	document.body.style.height = document.documentElement.clientHeight - h +'px'
+</script>
+
+{% endblock %}

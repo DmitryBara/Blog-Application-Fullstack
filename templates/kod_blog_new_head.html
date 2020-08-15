@@ -1,0 +1,51 @@
+{% extends 'kod_base.html' %}
+{% load static %}
+
+{% block title %} This HTML help to structure code {% endblock %}
+
+{% block content %}
+	<div class="top-article">
+		<div class="new-text">
+			<h4>NEW</h4>
+			<h1>{{ last_article.title }}</h1>
+			<div class="preview-text">
+				<span class="crop-text"> 
+					{{ last_article.text }}
+				</span>
+			</div>
+			 <button class ="btn btn-primary" onclick="document.location=`{{ last_article.id }}` ">
+	            <a href="{{ last_article.id }}">
+	                <span>Читать<span>
+	            </a>
+	        </button>
+		</div>
+		<img src="{{last_article.src_aws}}" alt='picture'>
+	</div>
+
+	<hr>
+
+	<script> 
+		`use strict`;
+		(function () {												// script cut the string ...
+
+	    const cropElement = document.querySelectorAll('.crop-text'), // выбор элементов 
+	          size = 250                                             // кол-во символов 
+	          endCharacter = '...';                                  // окончание 
+
+	    cropElement.forEach(el => {
+	        let text = el.innerHTML;
+
+	        if (el.innerHTML.length > size) {
+	            text = text.substr(0, size);
+	            el.innerHTML = text + endCharacter;
+	        }
+	    });
+
+	}());
+	</script>
+
+
+	{% block all-articles %}
+	{% endblock %}
+
+{% endblock %}

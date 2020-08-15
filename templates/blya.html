@@ -1,0 +1,42 @@
+{% extends 'pa_helper.html' %}
+{% load static %}
+
+{% block titleAAA %}Facebook Auth{% endblock %}
+{% block pa-window-title%} Вы вошли через Vkontakte {% endblock %}
+
+{% block pa-window %}
+
+<div class="card">
+
+
+
+
+
+  <div class="text-center my-2 d-inline-block">
+    <img src="{% static 'images/logo_kodland.png' %}" alt="" width="150" height="150" style="border-radius: 50%">
+  </div>
+
+  <div class="vk-info my-2">                 
+    <h6> Auth through Vk </h6>
+    <h6> Login: BLA BLA </h6>
+    <h6> Пригласи своих друзей! </h6>
+  </div>
+
+<div>
+
+
+ {% for i in y %}
+	<div class="one-friend-vk col-sm-4 mt-2 text-center" style="font-size: 70%">
+    	<img src="{% static 'images/logo_kodland.png' %}" style="width:100px; height:100px">
+    	<h1><a href="#"> Bla-bla-bla </a></h1>
+    	<h2>Санкт-Петербург </h2>
+    	<h2> Online</h2>
+  	</div>
+
+{% endfor %}
+
+
+</div>
+</div>
+
+{% endblock %}
