@@ -2,3 +2,5 @@
 .DS_Store
 staticfiles/
 media/
+__pycache__/
+migrations/
