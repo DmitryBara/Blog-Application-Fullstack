@@ -92,6 +92,7 @@ def add_article(request):
 def edit_article (request, article_id):
     try:
         article = Article.objects.get(id=article_id)
+        request.session['a_uid'] = article.uuid
     except Article.DoesNotExist:
         raise Http404
 

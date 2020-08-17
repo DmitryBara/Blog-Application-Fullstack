@@ -10,13 +10,13 @@ const inputs = document.querySelectorAll('#id_title, #id_text')
 const register = document.querySelector('input[type="submit"]')
 const progressStatus = document.getElementById("progress-status");
 
-
 // JS object checking inputs (SD)
+// On create is Bool from django temlates (edit or add)
 const disabledFields = new Object()
-disabledFields.title = true
-disabledFields.text = true
-disabledFields.image = true
-disabledFields.aws_loaded = true
+disabledFields.title = on_create
+disabledFields.text = on_create
+disabledFields.image = on_create
+disabledFields.aws_loaded = on_create
 
 // make Submit button Active or Disable 
 checkSubmit = () => {
