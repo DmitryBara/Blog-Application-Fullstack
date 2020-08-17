@@ -25,7 +25,7 @@ def my_profile(request):
 		friends_params = {
 			'v': '5.52',
 			'access_token': token,
-			'count': '5',
+			'count': '4',
 			'fields': 'city, online, photo_100',
 			'order': 'random'
 		}
@@ -42,6 +42,9 @@ def my_profile(request):
 		social = user.social_auth.get(provider='facebook')
 		ex = social.extra_data
 		return render(request, 'pa_fb.html', {'ex': ex})
+
+	else:
+		return HttpResponse('Выйдите из учетной записи админа.')
 
 
 

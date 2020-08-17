@@ -3,9 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime, timedelta
 
-
-
-import locale
+# import locale
 # locale.setlocale(locale.LC_TIME, 'ru_RU.UTF-8')
 
 

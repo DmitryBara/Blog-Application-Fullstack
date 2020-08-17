@@ -13,7 +13,7 @@ class ArticleForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         # Need article_id for check in clean_title, clean_image
-        # self,atticle_id is only on existing article
+        # self.atticle_id is only on existing article
         self.article_id = kwargs.pop('article_id', None)
         super(ArticleForm, self).__init__(*args, **kwargs)
 
