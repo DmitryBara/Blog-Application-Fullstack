@@ -1,7 +1,7 @@
-{% extends 'kod_base.html' %}
+{% extends 'base_hatter.html' %}
 {% load static %}
 
-{% block title %} Добавить статью {% endblock %}
+{% block title %} Редактировать статью {% endblock %}
 {% block content %} 
 
 <form enctype="multipart/form-data" method="post">{% csrf_token %}
@@ -24,27 +24,27 @@
 
 
 <div class='add'>
-	<h1>Добавить статью </h1>
+	<h1>Редактировать статью</h1>
 	<div class="title">
 		{{ form.title }}
 		<span>
-			<input type="submit" class="btn btn-primary mb-2" value="Опубликовать">
+			<input type="submit" class="btn btn-primary mb-2" value="Сохранить">
 		</span>
 	</div>
 	<div class="article">
 		{{ form.text }}
 		<div class="brd" id="image-preview"> 
 			<h3> Загрузить изображение </h3>
-			  	<img src="" alt="loading..." id="image-preview__image">
+			  	<img src="{{article.src_aws}}" alt="loading..." id="image-preview__image" style="display:inline-block">
 			  	<!-- --- For JavaScript. All Atrributes (class,id...) has been set in forms.py ---- -->
 			    <!-- <input required type="file" class="input-file" name="inpFile" accept=".png, .jpg, .jpeg" id="inpFile"> -->
-
-			    {{ form.image }}
-
-			    <label for="inpFile" class="btn btn-primary" id="image-preview__label">
+			    <div id='image-hidden-block' style="position: absolute; display:none"> 
+			    	{{ form.image }} 
+			    </div>
+			    <label for="inpFile" class="btn btn-primary" id="image-preview__label" style="display:none">
 			      <h5>Файл</h5>
 			    </label>
-			    <img src="{% static 'images/close.png' %}" id='image-remove'>
+			    <img src="{% static 'images/close.png' %}" id='image-remove' style="display:inline-block">
 			    <span id="progress-status" style="color: #CDCDCD; font-size:15px; display:none"></span>
 		</div>		
 	</div>
@@ -52,8 +52,9 @@
 
 </form>
 
-<script type="text/javascript">var on_create=true</script>
-<script src="{% static 'js/uploadToAWS.js' %}">OLOLO</script>
-<script src="{% static 'js/imgSendChangeBlock.js' %}">BLABLABLA</script>
+<script type="text/javascript">var on_create=false</script>
+<script src="{% static 'js/uploadToAWS.js' %}"></script>
+<script src="{% static 'js/imgSendChangeBlock.js' %}"></script>
 
 {% endblock %}
+

@@ -1,9 +1,9 @@
 /*. ------------- Site Header -------------*/
 
 a.disabled {
-pointer-events: none; /* делаем элемент неактивным для взаимодействия */
-cursor: default; /*  курсор в виде стрелки */
-color: #888;/* цвет текста серый */
+  pointer-events: none; /* делаем элемент неактивным для взаимодействия */
+  cursor: default; /*  курсор в виде стрелки */
+  color: #888;/* цвет текста серый */
 }
 
 
@@ -34,12 +34,12 @@ hr {
 
 .hat img {
   height: 72px;
-  position: absolute;
-  left: 90px;
+  margin-left: 90px;
+  margin-bottom: 20px
 }
 
 .hat span {
-  margin-left: 270px;
+  margin-left: 20px;
   height:  80px;
   line-height:  80px;
   font-family: "CirceRounded-AltBold";
@@ -158,7 +158,7 @@ hr {
 }
 
 .card .one-friend-vk {
-  max-width: 300px;
+  max-width: 200px;
   display: inline-block;
 }
 

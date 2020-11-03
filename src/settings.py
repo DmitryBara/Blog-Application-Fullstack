@@ -39,7 +39,7 @@ SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
 AUTHENTICATION_BACKENDS = [
    'social_core.backends.vk.VKOAuth2',
    'social_core.backends.facebook.FacebookOAuth2',
-   'django.contrib.auth.backends.ModelBackend', 
+   'django.contrib.auth.backends.ModelBackend',
 ]
 
 LOGIN_URL = 'login'
@@ -63,11 +63,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'jquery',
     'social_django',
+    'crispy_forms',
     ####
     'blog',
-    'mainpage',
-
+    'authentication',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -81,7 +83,7 @@ MIDDLEWARE = [
 ]
 
 
-ROOT_URLCONF = 'mysite1.urls'
+ROOT_URLCONF = 'src.urls'
 
 TEMPLATES = [
     {
@@ -104,17 +106,17 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'mysite1.wsgi.application'
+WSGI_APPLICATION = 'src.wsgi.application'
 
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'mysite1_db',
-        'USER' : 'dmitry',
-        'PASSWORD' : '1234',
-        'HOST' : 'localhost',
-        'PORT' : '5432',
+        'NAME': 'django_blog',
+        'USER': 'dmitry',
+        'PASSWORD': '1234',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 

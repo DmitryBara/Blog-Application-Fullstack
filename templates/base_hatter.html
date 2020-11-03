@@ -17,11 +17,9 @@
 <body>
     <div class="hat" id="hat"> 
         <a href="{% url 'all_articles' %}">
-            <img src="{% static 'images/logo_kodland.png' %}" alt="logo_kodland">
+            <img src="{% static '/images/python_logo.jpg' %}" alt="logo">
         </a>
         <span>Блог</span>
-        
-        {{ request.session.a_uid }}
 
         <button class ="btn btn-primary mb-2" onclick="document.location=`{% url 'add_article' %}` ">
             <a style="font-family: 'CirceRounded-AltBold'; font-size: 16px; display: inline-block;">
